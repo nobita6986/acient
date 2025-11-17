@@ -1,0 +1,5 @@
+{
+  "name": "Prehistoric Theme Automation Tool",
+  "description": "A specialized tool to automate the creation of visual content for prehistoric ASMR cinematic documentaries, featuring character-locking and direct integration with Google's Gemini API for image generation.",
+  "requestFramePermissions": []
+}
