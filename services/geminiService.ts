@@ -6,10 +6,6 @@ export async function generateImage(
   characterImages: string[], // base64 strings
   prompt: string
 ): Promise<string> {
-  if (characterImages.length !== 3) {
-    throw new Error("Exactly 3 character images are required.");
-  }
-
   const ai = new GoogleGenAI({ apiKey });
   
   const imageParts = characterImages.map(base64Data => ({

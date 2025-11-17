@@ -26,7 +26,7 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
 
   const handleCharFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const files = Array.from(e.target.files).slice(0, 3);
+      const files = Array.from(e.target.files).slice(0, 5);
       setCharacterFiles(files);
     }
   };
@@ -62,14 +62,14 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
 
   const isGenerateDisabled = () => {
     if (isLoading) return true;
-    if (characterFiles.length !== 3) return true;
+    if (characterFiles.length === 0) return true;
     if (inputMode === 'scenario' && (!scenario.trim() || duration <= 0)) return true;
     if (inputMode === 'script' && !scriptFile) return true;
     return false;
   };
 
   const getTooltipText = () => {
-    if (characterFiles.length !== 3) return "Please upload exactly 3 character images.";
+    if (characterFiles.length === 0) return "Please upload at least 1 character image.";
     if (inputMode === 'scenario' && (!scenario.trim() || duration <= 0)) return "Please provide a scenario and a valid duration.";
     if (inputMode === 'script' && !scriptFile) return "Please upload a script file.";
     return "";
@@ -83,7 +83,7 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
       {/* Character Image Upload */}
       <div>
         <label className="block text-sm font-medium mb-2 text-gray-300">
-          <span className="text-red-500 mr-1">*</span>Upload 3 Character Images
+          <span className="text-red-500 mr-1">*</span>Upload Character Images (1-5)
         </label>
         <div
           className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-600 rounded-md cursor-pointer hover:border-cyan-500 transition-colors"
@@ -101,7 +101,7 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
           />
         </div>
         {characterFiles.length > 0 && (
-          <div className="mt-4 grid grid-cols-3 gap-2">
+          <div className="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-2">
             {characterFiles.map((file, index) => (
               <img
                 key={index}
@@ -111,9 +111,6 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
               />
             ))}
           </div>
-        )}
-        {characterFiles.length > 0 && characterFiles.length !== 3 && (
-            <p className="text-xs text-red-500 mt-2">Please select exactly 3 images.</p>
         )}
       </div>
 

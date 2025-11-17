@@ -1,7 +1,8 @@
+
 import type { Scene } from '../types';
 
 // 1a. STYLE_LOCK (Bản thiết kế nghệ thuật)
-const STYLE_LOCK = "ultra-realistic prehistoric ASMR cinematic documentary. Primary character strictly matches 3 uploaded references (face, hair, scary, outfit) to ensure consistency. Supporting characters follow same style but not identity-locked. Lighting: warm amber rimlight, cool fill, fog haze. Lens: 45mm f/2.0 for shallow DoF. Film grain: subtle. Color grade: amber-teal cinematic tone.";
+const STYLE_LOCK = "ultra-realistic prehistoric ASMR cinematic documentary. Primary character strictly matches uploaded reference images (face, hair, scary, outfit) to ensure consistency. Supporting characters follow same style but not identity-locked. Lighting: warm amber rimlight, cool fill, fog haze. Lens: 45mm f/2.0 for shallow DoF. Film grain: subtle. Color grade: amber-teal cinematic tone.";
 
 // 1c. Technical Suffix (Hậu tố kỹ thuật cho ảnh)
 const TECHNICAL_SUFFIX = "Distinct moment in the story. Tactile ASMR details. Photorealistic. No text, words, or logos.";
