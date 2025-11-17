@@ -16,7 +16,7 @@ interface SetupPanelProps {
 
 export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading }) => {
   const [characterFiles, setCharacterFiles] = useState<File[]>([]);
-  const [scenario, setScenario] = useState<string>('A lone hunter tracking a mammoth');
+  const [scenario, setScenario] = useState<string>('');
   const [scriptFile, setScriptFile] = useState<File | null>(null);
   const [duration, setDuration] = useState<number>(15);
   const [inputMode, setInputMode] = useState<InputMode>('scenario');
@@ -56,10 +56,8 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
     if(scriptFileInputRef.current) {
         scriptFileInputRef.current.value = "";
     }
-    // Revert to scenario mode if script is removed, unless scenario is also empty
-    if(scenario) {
-        setInputMode('scenario');
-    }
+    // Revert to scenario mode when script is removed
+    setInputMode('scenario');
   };
 
   const isGenerateDisabled = () => {
@@ -128,7 +126,7 @@ export const SetupPanel: React.FC<SetupPanelProps> = ({ onGenerate, isLoading })
           id="scenario"
           value={scenario}
           onChange={handleScenarioChange}
-          placeholder="e.g., A lone hunter tracking a mammoth"
+          placeholder="A lone hunter tracking a mammoth"
           rows={3}
           className="w-full bg-[#0c101c] border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition"
         />
